@@ -1,4 +1,4 @@
-# Python_Onchage_Jquery
+# Python_Onchange_Jquery
 
 
 The module uses the onchange event with Jquery-Ajax, to select the information.

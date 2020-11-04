@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body >
+
+    <select name="cambio" id="1" onchange ="consulta_ajax(this);">
+        <option value="Sebastian01">Sebastian01</option>
+        <option value="Sebastian02">Sebastian02</option>
+        <option value="Sebastian03">Sebastian03</option>
+        <option value="Sebastian0004">Sebastian0004</option>
+        <option value="Sebastian05">Sebastian05</option>
+
+
+    </select>
+
+    <table>
+    <thead>
+    <th>id</th>
+    <th>nombre</th>
+    </thead>
+    <tbody id="tabla">
+    {% for contact in contacts %}
+        <tr>
+        <td>{{ contact[0] }}</td>
+        <td>{{ contact[1] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+
+    <script type="text/javascript">
+        function consulta_ajax(element){
+            let valor = element.value;
+            let tabla = document.getElementById("tabla");
+
+            $.ajax({
+            url:"/ajax",
+            type:"POST",
+            data: {"value":valor},
+            success: function(response){
+                tabla.innerHTML = response
+
+            },
+            error: function(error){
+                alert ('Error de llamada POST')
+            
+            },
+            });
+        }
+
+    </script>
+</body>
+
+</html>
